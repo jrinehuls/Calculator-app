@@ -7,47 +7,47 @@
     <script src="script.js" defer></script>
     <link rel="stylesheet", href="style.css">
 
-    <title>Calc Ya Later</title>
+    <title>Calc Ya Later, Alligator</title>
 </head>
 <body>
     <div class="calculator">
         <div class="display">
-            <label id="display-label"></label>
+            <label id="top-label"></label>
+            <label id="bottom-label"></label>
         </div>
         <div class="button-row" id="first-row">
-            <button id="mod">Mod</button>
-            <button id="ce">CE</button>
-            <button id="c">C</button>
-            <button id="bksp">Bksp</button>
+            <button id="clear">clear contents</button>
+            <button id="recip">1/x</button>
+            <button class="arit-button" id="mod" value="%">%</button>
         </div>
         <div class="button-row" id="second-row">
-            <button id="recip">1/x</button>
+            <button id="exp">x^y</button>
             <button id="square">x^2</button>
             <button id="sqrt">sqrt</button>
-            <button id="divide">/</button>
+            <button class="arit-button" id="divide" value="/">/</button>
         </div>
         <div class="button-row" id="third-row">
-            <button id="7">7</button>
-            <button id="8">8</button>
-            <button id="9">9</button>
-            <button id="mult">X</button>
+            <button class ="num-button" value="7">7</button>
+            <button class ="num-button" value="8">8</button>
+            <button class ="num-button" value="9">9</button>
+            <button class="arit-button" id="mult" value="x">*</button>
         </div>
         <div class="button-row" id="fourth-row">
-            <button id="4">4</button>
-            <button id="5">5</button>
-            <button id="6">6</button>
-            <button id="sub">-</button>
+            <button class ="num-button" value="4">4</button>
+            <button class ="num-button" value="5">5</button>
+            <button class ="num-button" value="6">6</button>
+            <button class="arit-button" id="sub" value="-">-</button>
         </div>
         <div class="button-row" id="fifth-row">
-            <button id="1">1</button>
-            <button id="2">2</button>
-            <button id="3">3</button>
-            <button id="add">+</button>
+            <button class ="num-button" value="1">1</button>
+            <button class ="num-button" value="2">2</button>
+            <button class ="num-button" value="3">3</button>
+            <button class="arit-button" id="add" value="+">+</button>
         </div>
         <div class="button-row" id="sixth-row">
             <button id="neg">+/-</button>
-            <button id="0">0</button>
-            <button id="decimal">.</button>
+            <button class ="num-button" value="0">0</button>
+            <button id="decimal" value=".">.</button>
             <button id="equals">=</button>
         </div>
     </div>

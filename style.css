@@ -3,10 +3,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: baseline;
+    background: linear-gradient(rgb(255, 100, 100), rgb(100, 100, 255));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .calculator {
-    padding-top: 100px;
+    margin-top: 150px;
     --ht: 400px;
     display: flex;
     flex-direction: column;
@@ -14,29 +17,35 @@ body {
     max-width: 450px;
     height: var(--ht);
     width: 30%;
+    border: 5px solid black;
 }
 
 .display {
     text-align: right;
     border: 1px solid black;
-    height: calc(var(--ht)/7);
+    height: calc(var(--ht)/4);
     border-radius: 2px;
     background-color: azure;
 }
 
-#display-label {
+#top-label,
+#bottom-label {
     display: flex;
-    height: 100%;
+    height: 50%;
     align-items: center;
     justify-content: right;
     margin-right: 5%;
     font-size: 20px;
 }
 
+#bottom-label {
+    font-size: 36px;
+}
+
 .button-row {
     width: 100%;
     font-size: 0px;
-    height: calc(var(--ht)/7);
+    height: calc(var(--ht)/8);
 }
 
 button {
@@ -44,4 +53,14 @@ button {
     height: 100%;
     border-collapse: collapse;
     font-size: 20px;
+    background-color: rgb(220, 220, 220);    
+}
+
+#clear {
+    width: 50%;
+    background-color: rgb(255, 100, 100);
+}
+
+#equals {
+    background-color: rgb(100, 100, 255); 
 }
