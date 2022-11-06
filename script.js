@@ -1,7 +1,9 @@
 let topDisplay = "";
-let bottomDisplay = "0";
+let bottomDisplay = "";
 let result = "";
 let reset = true;
+const digits = 12;
+const places = 8;
 document.getElementById("bottom-label").innerHTML = bottomDisplay;
 const numButtons = document.querySelectorAll(".num-button");
 const aritButtons = document.querySelectorAll(".arit-button");
@@ -11,6 +13,7 @@ const expButton = document.getElementById("exp");
 const squareButton = document.getElementById("square");
 const sqrtButton = document.getElementById("sqrt");
 const negButton = document.getElementById("neg");
+const decimalButton = document.getElementById("decimal");
 const equalsButton = document.getElementById("equals");
 
 
@@ -110,7 +113,12 @@ function recip() {
     reset=true;
     if (bottomDisplay != "") {
         bottomDisplay = onEquals('^', bottomDisplay, -1);
-        updateLowerDisplay(bottomDisplay);
+        if (bottomDisplay.toString().length > digits) {
+            updateLowerDisplay(Number(bottomDisplay).toExponential(places));
+        }
+        else {
+            updateLowerDisplay(bottomDisplay);        
+        }
     }    
 };
 
@@ -134,7 +142,12 @@ function square() {
     reset=true;
     if (bottomDisplay != "") {
         bottomDisplay = onEquals('^', bottomDisplay, 2);
-        updateLowerDisplay(bottomDisplay);
+        if (bottomDisplay.toString().length > digits) {
+            updateLowerDisplay(Number(bottomDisplay).toExponential(places));
+        }
+        else {
+            updateLowerDisplay(bottomDisplay);        
+        }
     }    
 };
 
@@ -144,7 +157,12 @@ function squareRoot() {
     reset=true;
     if (bottomDisplay != "") {
         bottomDisplay = onEquals('^', bottomDisplay, 0.5);
-        updateLowerDisplay(bottomDisplay);
+        if (bottomDisplay.toString().length > digits) {
+            updateLowerDisplay(Number(bottomDisplay).toExponential(places));
+        }
+        else {
+            updateLowerDisplay(bottomDisplay);        
+        }
     }    
 };
 
@@ -154,16 +172,33 @@ function negate() {
     reset=true;
     if (bottomDisplay != "") {
         bottomDisplay = 0 - Number(bottomDisplay);
-        updateLowerDisplay(bottomDisplay);
+        if (bottomDisplay.toString().length > digits) {
+            updateLowerDisplay(Number(bottomDisplay).toExponential(places));
+        }
+        else {
+            updateLowerDisplay(bottomDisplay);        
+        }
     }    
 };
 
 negButton.addEventListener('click', negate)
+//---------------event listener for decimal button------------------
+function decimal() {
+    //reset=false;
+    if (bottomDisplay != "" && !bottomDisplay.toString().includes('.')) {
+        bottomDisplay = bottomDisplay + '.';
+        updateLowerDisplay(bottomDisplay);
+        reset=false;
+    }    
+    
+};
+
+decimalButton.addEventListener('click', decimal)
 //---------------event listener for clear button------------------
 function clear() {
     reset=true;
     updateUpperDisplay('');
-    updateLowerDisplay(0);  
+    updateLowerDisplay('');  
 };
 
 clearButton.addEventListener('click', clear)
@@ -178,7 +213,12 @@ function calculate() {
         topDisplay = `${topDisplay} ${bottomDisplay} =`;
         bottomDisplay = onEquals(operation,a,b);
         updateUpperDisplay(topDisplay);
-        updateLowerDisplay(bottomDisplay);
+        if (bottomDisplay.toString().length > digits) {
+            updateLowerDisplay(Number(bottomDisplay).toExponential(places));
+        }
+        else {
+            updateLowerDisplay(bottomDisplay);        
+        }
         reset = true;
     }
 };
@@ -214,7 +254,9 @@ window.addEventListener("keydown", function (e) {
     if(e.key === '^') {
         exponent();
     }
-
+    if(e.key === '.') {
+        decimal();
+    }
     if(e.key === '=' || e.key === "Enter") {
         calculate();
     }
